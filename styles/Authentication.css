@@ -4,76 +4,123 @@
 }
 
 .article {
-  width: 35em;
+  width: 100%;
+  max-width: 35em;
   align-items: start;
   border-radius: 30px;
   padding: 20px 50px;
   margin: 10px;
 }
 .responsiveSection {
-  width: 20em;
-  background-color: #bfd8db;
+  width: 100%;
+  max-width: 20em;
+  background-color: #c4deec;
   padding: 20px;
   border-radius: 30px;
-  
-
+  margin: 10px 0;
 }
 .responsiveSection div {
   gap: 0.5em;
 }
-.form{
-    padding: 20px;
-    background-color: transparent;
-    box-shadow: 0px 4px 6px #0000005c;
-    border-radius: 10px;
-    margin-top: 5px;
+.form {
+  padding: 15px;
+  background-color: transparent;
+  box-shadow: 0px 4px 6px #0000005c;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 
 .formImg {
-  width: 16em;
+  width: 100%;
+  max-width: 16em;
   height: auto;
   border-radius: 20px;
-  border-style:inset;
+  border-style: inset;
   border-width: 3px;
-  border-color:antiquewhite;
+  border-color: antiquewhite;
 }
 
 .formButton {
   padding: 10px 20px;
   margin: 5px;
   font-size: 1em;
-  background-color: #02d102;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #02d102;
+  background:linear-gradient(to right,#0027d6 , #00204a );
+  border-radius: 8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1801c9a5;
   font-weight: bold;
+  box-shadow: 0 4px 6px #050028a5;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.formButton:hover{
-    background-color: #00b300;
+.formButton:hover {
+    box-shadow: 0 0 10px #3ac8eb80;
+    background: linear-gradient(to right, #20b1fa, #1bf8a7);
+    border-color: #6CB4EE;
+    color: #142850;
+    font-size: 1em;
+    font-weight: bold;
+
 }
 
-.formInput{
-    margin: 5px;
-    border-radius: 5px;
-    height: 2em;
-    padding-left: 7px;
-    border-style: inset;
-    border-color:antiquewhite;
+.formInput {
+  margin: 5px;
+  border-radius: 5px;
+  height: 2em;
+  padding-left: 7px;
+  border-style: inset;
+  border-color: antiquewhite;
 }
 
-.forgotPassword{
-    letter-spacing:normal;
-    font-weight: 600;
+.forgotPassword {
+  letter-spacing: normal;
+  font-weight: 600;
 }
 
-.forgotPassword a{
-    color:#1900ff;
-    text-decoration: none;
-    transition: text-decoration 0.3s ease;;
+.forgotPassword a {
+  color: #1900ff;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
 }
 
-.forgotPassword a:hover{
-    text-decoration: underline;
+.forgotPassword a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .main {
+        margin: 5% 2%;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .article, .responsiveSection {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .article {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        margin: 5% 1%;
+    }
+    
+    .article, .responsiveSection {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .formInput, .formButton {
+        width: 100%;
+    }
+    
+    .formButton {
+        padding: 8px;
+    }
 }
