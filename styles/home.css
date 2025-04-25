@@ -1,38 +1,39 @@
 .main{
         margin: 5%;
         gap: 10px;
-        height: 60%;
-        max-height: 100vh;
+        min-height: 60vh;
 }
 
 .main section{
-    margin: 5px;
-    max-height: 30em;
-    height: 80%;  
+    margin: 10px 0;
+    width: 40%; 
 }
 
 .userWelcome{
-    align-items: start;
-    width: 50%; 
+    align-items: flex-start;
     gap: 30px;
-    border-radius: 10px;
-    padding: 12.5% 7.5%;
+    padding: 2rem;
     
 }
 
 .quizSelect{
     gap: 30px;
-    border: 2px solid whitesmoke;
+    border: 2px solid #a5a5a5;
     background: Linear-gradient(to right,#edeff6 , #3e597d );
-    padding: 5%;
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 .quizSelect h2{
-    padding-bottom: 40px;
+    padding-bottom: 2rem;
     color:  #142850;
+    text-align: center; 
 }
 
 .quizSelect button{
+    width: 100%; 
+    max-width: 250px; 
+    padding: 12px 20px;
     background:linear-gradient(to right,#0027d6 , #00204a );
     border-color: #1801c9a5;
     font-weight: bold;
@@ -48,4 +49,37 @@
     color: #050028a5;
     font-size: 1em;
     font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .main {
+        flex-direction: column;
+    }
+    
+    .userWelcome {
+        width: 100%;
+        padding: 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .quizSelect {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.5rem; 
+    }
+    
+    .userWelcome, .quizSelect {
+        padding: 1rem;
+        gap: 15px;
+    }
+    
+    .quizSelect button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
 }
