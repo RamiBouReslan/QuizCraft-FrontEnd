@@ -38,8 +38,7 @@
     min-height: 8em;
     padding: 1em;
     background-color:transparent;
-    border-bottom: ridge;
-    border-width: thin;
+    border-bottom:thin ridge whitesmoke;
     border-radius: 10px; 
 }
 
@@ -76,6 +75,9 @@
    background-color: #0a326e;
 }
 
+.hidden {
+    display: none;
+}
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
