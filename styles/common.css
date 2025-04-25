@@ -11,7 +11,7 @@
     min-height: 100vh;
 }
 
-.logo-img{
+.logoImg{
     width: 6em;
     height: auto;
 }
@@ -26,7 +26,7 @@
     flex-direction: column;
 }
 
-.space-btw{
+.spaceBtw{
     justify-content: space-between;
 }
 
@@ -51,12 +51,12 @@
     text-align: justify;
 }
 
-.section-header{
+.sectionHeader{
     margin: 0 2%;
     gap: 5px;
 }
 
-.bottun-header{
+.bottunHeader{
    padding: 10px 20px;
    margin: 0 5px; 
    font-size: 1em;
@@ -65,5 +65,9 @@
    border-radius: 20px;
    border-width: 3px ;
    border-color: whitesmoke;   
+}
+
+.bottunHeader:hover{
+   background-color: #0a326e;
 }
 
