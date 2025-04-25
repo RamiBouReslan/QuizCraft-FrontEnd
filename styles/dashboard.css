@@ -1,0 +1,41 @@
+    .dashboard {
+        gap: 2rem;
+        margin: 20px auto;
+        background: linear-gradient(to bottom,#edeff6 , #3e597d );
+        border-radius: 20px;
+        min-height: 75vh;
+        justify-content: flex-start;
+        max-width: 1200px;
+        width: 80%;
+    
+    }
+
+    .title{
+        color: #11045e;
+        padding: 2rem       ;
+    }
+    .scoreTable{
+        width: 40%;
+        border-style: inset ;
+        min-height: 8rem;
+        color: #11045e;
+        padding: 1rem;
+    }
+
+    .username{
+        width: auto;
+        min-width: 3rem;
+        padding: 1rem;
+        margin: 0.5rem;
+        align-items: flex-end;
+    
+    }
+
+    .scoreList{
+        width: auto;
+        min-width: 3rem;
+        padding: 1rem;
+        margin: 0.5rem;
+        align-items: flex-start;
+        
+    }

@@ -6,6 +6,7 @@
     <title>QuizCraft - Dashboard</title>
     <link rel="icon" href="../assets/images/emblom.png" type="image/png" />
     <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
 </head>
 <body>
     <body class="container">
@@ -18,15 +19,26 @@
             <button class="bottunHeader font logoutBottun">Logout</button>
           </section>
         </header>
-        <main >
-            <h2>Scores Overview</h2>
-            <section>
-                <h3>UserName</h3>
+        <main class="flex column wrap font dashboard">
+            <h2 class="font title">Scores Overview</h2>
+            <article class="flex  scoreTable font">
+            <section class="flex column username">
+                <h3 >UserName</h3>
             </section>
-            <ul>
+            <ul class=" flex column scoreList">
                 <li>HTML Basic : 3/5  </li>
                 <li>CSS Basics : 4/5 </li>
             </ul>
+        </article>
+        <article class="flex  scoreTable font">
+            <section class="flex column username">
+                <h3 >UserName</h3>
+            </section>
+            <ul class=" flex column scoreList">
+                <li>HTML Basic : 3/5  </li>
+                <li>CSS Basics : 4/5 </li>
+            </ul>
+        </article>
         </main>
 </body>
 </html>
