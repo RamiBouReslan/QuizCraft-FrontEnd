@@ -1,0 +1,93 @@
+.mainBody {
+  gap: 2rem;
+  margin: 20px;
+  background: linear-gradient(to right, #1900ff, #000852);
+  border-radius: 20px;
+  min-height: 75vh;
+  justify-content: flex-start;
+}
+
+.quizTitle {
+  text-decoration: underline wavy;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.quizForm {
+  gap: 1rem;
+  align-items: flex-start;
+}
+.question {
+  background: #f8f8f81a;
+  width: 100%;
+  padding: 1.5rem;
+  align-items: flex-start;
+}
+
+.question h3 {
+  margin-bottom: 1rem;
+}
+
+.question div {
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.optionLlabel:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.optionInput {
+  margin: 0 10px 0 5px;
+  transform: scale(1.3);
+  accent-color: #11045e;
+  cursor: pointer;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1em;
+  background: linear-gradient(to right, #ffffff, #5fa4ff);
+  border-radius: 8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1801c9a5;
+  font-weight: bold;
+  box-shadow: 0 4px 6px #050028a5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #00031e;
+}
+
+.submitButton:hover {
+  box-shadow: 0 0 10px #3ac8eb80;
+  background: linear-gradient(to right, #20b1fa, #1bf8a7);
+  border-color: #6cb4ee;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.footer {
+  height: auto;
+  min-height: 8em;
+  padding: 1em;
+  background-color: transparent;
+  border-top: thin ridge whitesmoke;
+  border-radius: 10px;
+}
+
+.footer h1{
+    text-align: center;
+}
