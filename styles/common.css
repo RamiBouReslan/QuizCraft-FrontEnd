@@ -78,6 +78,15 @@
 .hidden {
     display: none;
 }
+
+.logoutBottun{
+    background-color: #830000;
+}
+
+.logoutBottun:hover{
+    background-color: #b00000;
+}
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
