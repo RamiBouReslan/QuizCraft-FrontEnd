@@ -39,3 +39,13 @@ const elements = {
     }
   }
   
+  
+  function logout() {
+    sessionStorage.removeItem("currentUser");
+    window.location.href = "../index.html";
+  }
+  
+
+  document.addEventListener("DOMContentLoaded", initializeHomePage);
+  elements.logoutButton.addEventListener("click", logout);
+  
