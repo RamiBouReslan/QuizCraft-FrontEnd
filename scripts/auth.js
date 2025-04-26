@@ -1,16 +1,25 @@
+
 const elements = {
   loginTabBtn: document.getElementById("loginTabBtn"),
   signupTabBtn: document.getElementById("signupTabBtn"),
-
   loginSection: document.getElementById("loginSection"),
   resetPassSection: document.getElementById("resetPassSection"),
   signupSection: document.getElementById("signupSection"),
-
   loginForm: document.getElementById("loginForm"),
   resetPasswordForm: document.getElementById("resetPasswordForm"),
   signupForm: document.getElementById("signupForm"),
-
   forgotPasswordLink: document.getElementById("forgotPasswordLink"),
+  loginEmail: document.getElementById("loginEmail"),
+  loginPassword: document.getElementById("loginPassword"),
+  signupEmail: document.getElementById("signupEmail"),
+  signupPassword: document.getElementById("signupPassword"),
+  signupConfirmPassword: document.getElementById("signupConfirmPassword"),
+  resetEmail: document.getElementById("resetEmail"),
+  resetNewPassword: document.getElementById("resetNewPassword"),
+  resetConfirmPassword: document.getElementById("resetConfirmPassword"),
+  resetHiddenDiv: document.getElementById("resetHiddenDiv"),
+  resetSubmitBtn: document.getElementById("resetSubmitBtn"),
+  resetConfirmBtn: document.getElementById("resetConfirmBtn"),
 };
 
 function showSection(section) {
@@ -18,46 +27,42 @@ function showSection(section) {
   elements.signupSection.classList.add("hidden");
   elements.resetPassSection.classList.add("hidden");
 
-  
-
-  switch (section) {
-    case "login":
-      elements.loginSection.classList.remove("hidden");
-      break;
-
-    case "signup":
-      elements.signupSection.classList.remove("hidden");
-      break;
-
-    case "reset":
-      elements.resetPassSection.classList.remove("hidden");
-      break;
+  if (section === "login") {
+    elements.loginSection.classList.remove("hidden");
+  } else if (section === "signup") {
+    elements.signupSection.classList.remove("hidden");
+  } else if (section === "reset") {
+    elements.resetPassSection.classList.remove("hidden");
   }
 }
 
 function handleLogin(e) {
   e.preventDefault();
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-  const users = JSON.parse(localStorage.getItem("quizUsers"));
+  const email = elements.loginEmail.value;
+  const password = elements.loginPassword.value;
+  const users = JSON.parse(localStorage.getItem("quizUsers")) || [];
 
   if (email === "admin@quiz.com" && password === "admin123") {
     sessionStorage.setItem(
       "currentUser",
-      JSON.stringify({ email, role: "admin" })
+      JSON.stringify({ email: email, role: "admin" })
     );
     window.location.href = "./pages/dashboard.html";
     return;
   }
 
-  const user = users.find(function (u) {
-    return u.email === email && u.password === password;
-  });
+  let user = null;
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email && users[i].password === password) {
+      user = users[i];
+      break;
+    }
+  }
 
   if (user) {
     sessionStorage.setItem(
       "currentUser",
-      JSON.stringify({ email, role: "user" })
+      JSON.stringify({ email: email, role: "user" })
     );
     window.location.href = "./pages/home.html";
   } else {
@@ -67,74 +72,95 @@ function handleLogin(e) {
 
 function handleSignup(e) {
   e.preventDefault();
-  const email = elements.signupForm.querySelector('input[type="email"]').value;
-  const password = elements.signupForm.querySelector(
-    'input[type="password"]'
-  ).value;
-  const confirmPassword = elements.signupForm.querySelectorAll(
-    'input[type="password"]'
-  )[1].value;
+
+  const email = elements.signupEmail.value;
+  const password = elements.signupPassword.value;
+  const confirmPassword = elements.signupConfirmPassword.value;
 
   if (password !== confirmPassword) {
     alert("Passwords don't match!");
     return;
   }
 
-  const users = JSON.parse(localStorage.getItem("quizUsers"));
-  if (
-    users.some(function (u) {
-      return u.email === email;
-    })
-  ) {
-    alert("Email already registered!");
-    return;
+  const users = JSON.parse(localStorage.getItem("quizUsers")) || [];
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      alert("Email already registered!");
+      return;
+    }
   }
 
-  users.push({ email, password, role: "user", scores: {} });
+  users.push({ email: email, password: password, role: "user", scores: {} });
   localStorage.setItem("quizUsers", JSON.stringify(users));
-  alert("Registration successful! Please login.");
-  showSection("login");
+
+  alert("Registration successful! Redirecting...");
+  window.location.href = "./pages/home.html";
   elements.signupForm.reset();
 }
 
 function handlePasswordReset(e) {
   e.preventDefault();
-  const email = elements.resetPasswordForm.querySelector(
-    'input[type="email"]'
-  ).value;
-  const newPassword = elements.resetPasswordForm.querySelectorAll(
-    'input[type="password"]'
-  )[0].value;
-  const confirmPassword = elements.resetPasswordForm.querySelectorAll(
-    'input[type="password"]'
-  )[1].value;
 
-  if (newPassword !== confirmPassword) {
-    alert("Passwords don't match!");
-    return;
+  const email = elements.resetEmail.value;
+
+  if (elements.resetHiddenDiv.classList.contains("hidden")) {
+    const users = JSON.parse(localStorage.getItem("quizUsers")) || [];
+
+    let userExists = false;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === email) {
+        userExists = true;
+        break;
+      }
+    }
+
+    if (!userExists) {
+      alert("Email not found in our system!");
+      return;
+    }
+
+    elements.resetHiddenDiv.classList.remove("hidden");
+    elements.resetSubmitBtn.classList.add("hidden");
+  } else {
+    const newPassword = elements.resetNewPassword.value;
+    const confirmPassword = elements.resetConfirmPassword.value;
+
+    if (newPassword !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("quizUsers")) || [];
+    let userIndex = -1;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === email) {
+        userIndex = i;
+        break;
+      }
+    }
+
+    if (userIndex !== -1) {
+      users[userIndex].password = newPassword;
+      localStorage.setItem("quizUsers", JSON.stringify(users));
+      sessionStorage.setItem(
+        "currentUser",
+        JSON.stringify({ email: email, role: "user" })
+      );
+
+      alert("Password updated successfully! Redirecting...");
+
+      
+      window.location.href = "./pages/home.html";
+    }
   }
-
-  const users = JSON.parse(localStorage.getItem("quizUsers"));
-  const userIndex = users.findIndex(function (u) {
-    return u.email === email;
-  });
-
-  if (userIndex === -1) {
-    alert("Email not found!");
-    return;
-  }
-
-  users[userIndex].password = newPassword;
-  localStorage.setItem("quizUsers", JSON.stringify(users));
-  alert("Password updated successfully!");
-  showSection("login");
-  elements.resetPasswordForm.reset();
 }
 
 function setupEventListeners() {
   elements.loginTabBtn.addEventListener("click", function () {
     showSection("login");
   });
+
   elements.signupTabBtn.addEventListener("click", function () {
     showSection("signup");
   });
