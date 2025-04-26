@@ -80,32 +80,49 @@ function handleQuizSubmission() {
 
     scoreFooter.innerHTML = `You Scored: ${score} / ${currentQuiz.questions.length}`;
 
-    const currentUserData = localStorage.getItem("currentUser");
+    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
-    if (currentUserData) {
-        const user = JSON.parse(currentUserData);
-
-        if (!user.scores) {
-            user.scores = [];
-        }
-
+    if (currentUser) {
+       
+        if (!currentUser.scores) currentUser.scores = [];
+        
         const quizScore = {
             title: selectedQuizTitle,
             score: `${score} / ${currentQuiz.questions.length}`,
         };
 
-        const existingScoreIndex = user.scores.findIndex(s => s.title === quizScore.title);
-        if (existingScoreIndex === -1) {
-            user.scores.push(quizScore);
-            localStorage.setItem("currentUser", JSON.stringify(user)); 
+       
+        const existingScoreIndex = currentUser.scores.findIndex(
+            (s) => s.title === quizScore.title
+        );
 
-            // Update the quizUsers list as well
-            let usersData = JSON.parse(localStorage.getItem("quizUsers")) || [];
-            const userIndex = usersData.findIndex((u) => u.email === user.email); 
-            if (userIndex !== -1) {
-                usersData[userIndex].scores.push(quizScore); 
-                localStorage.setItem("quizUsers", JSON.stringify(usersData)); 
+        if (existingScoreIndex === -1) {
+            currentUser.scores.push(quizScore);
+        } else {
+            currentUser.scores[existingScoreIndex] = quizScore; 
+        }
+
+      
+        sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+       
+        const users = JSON.parse(localStorage.getItem("quizUsers")) || [];
+        const userIndex = users.findIndex((u) => u.email === currentUser.email);
+
+        if (userIndex !== -1) {
+            if (!users[userIndex].scores) users[userIndex].scores = [];
+            
+            const existingUserScoreIndex = users[userIndex].scores.findIndex(
+                (s) => s.title === quizScore.title
+            );
+
+            if (existingUserScoreIndex === -1) {
+                users[userIndex].scores.push(quizScore);
+            } else {
+                users[userIndex].scores[existingUserScoreIndex] = quizScore;
             }
+
+            localStorage.setItem("quizUsers", JSON.stringify(users));
         }
     }
 }
