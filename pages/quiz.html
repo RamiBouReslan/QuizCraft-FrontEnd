@@ -7,75 +7,27 @@
     <link rel="icon" href="../assets/images/emblom.png" type="image/png" />
     <link rel="stylesheet" href="../styles/common.css" />
     <link rel="stylesheet" href="../styles/quiz.css" />
+    <script src="../scripts/storage.js" defer></script>
+    <script src="../scripts/quiz.js" defer></script>
   </head>
   <body class="container">
     <header class="header flex spaceBtw wrap">
       <section class="flex sectionHeader">
         <img class="logoImg" src="../assets/images/logo1.PNG" alt="logo" />
-        <h1 class="font h1">Choose the Correct Answer!</h1>
+        <h1 id="quizTitle" class="font h1">Choose the Correct Answer!</h1>
       </section>
       <section class="flex sectionHeader">
-        <button class="bottunHeader font">Back to Home Page</button>
-        <button class="bottunHeader font logoutBottun">Logout</button>
+        <button id="homeButton" class="bottunHeader font">Back to Home Page</button>
+        <button id="logoutButton" class="bottunHeader font logoutBottun">Logout</button>
       </section>
     </header>
     <main class="flex column wrap font mainBody">
-      <h2 class="quizTitle">HTML Basics</h2>
-      <form class="flex column quizForm">
-        <section class="flex column question">
-          <h3>What does HTML stand for?</h3>
-          <div class="flex column">
-            <label class="optionLabel">
-              <input
-                type="radio"
-                name="html_meaning"
-                class="optionInput"
-              />Hyper Text Markup Language</label
-            >
-            <label class="optionLabel">
-              <input type="radio" name="html_meaning" class="optionInput" />Home
-              Tool Markup Language</label
-            >
-            <label class="optionLabel"
-              ><input
-                type="radio"
-                name="html_meaning"
-                class="optionInput"
-              />Hyperlinks and Text Markup Language
-            </label>
-          </div>
-        </section>
-        <section class="flex column question">
-          <h3>What does HTML stand for?</h3>
-          <div class="flex column">
-            <label>
-              <input
-                type="radio"
-                name="paragraph_tag"
-                class="optionInput"
-              />Hyper Text Markup Language</label
-            >
-            <label>
-              <input
-                type="radio"
-                name="paragraph_tag"
-                class="optionInput"
-              />Home Tool Markup Language</label
-            >
-            <label
-              ><input
-                type="radio"
-                name="paragraph_tag"
-                class="optionInput"
-              />Hyperlinks and Text Markup Language
-            </label>
-          </div>
-        </section>
-      </form>
-      <button  class="submitButton">Submit</button>
+    
+      <button id="submitButton" class="submitButton">Submit</button>
+
     </main>
     <footer class="footer">
-        <h1 class="font h1">You Scored: </h1>
+        <h1 id="scoreFooter" class="font h1">You Scored: </h1>
     </footer>
   </body>
 </html>
