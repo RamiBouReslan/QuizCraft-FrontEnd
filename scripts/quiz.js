@@ -26,7 +26,7 @@ function initializeQuiz() {
     return;
   }
 
-  quizForm.innerHTML = ""; 
+  quizForm.innerHTML = "";
 
   for (let i = 0; i < currentQuiz.questions.length; i++) {
     const questionSection = document.createElement("section");
@@ -60,25 +60,54 @@ function initializeQuiz() {
 }
 
 function handleQuizSubmission() {
-  let score = 0;
-  const selectedQuizTitle = localStorage.getItem("selectedQuizTitle");
-  const currentQuiz = quizzes.find((q) => q.title === selectedQuizTitle);
+    let score = 0;
+    const selectedQuizTitle = localStorage.getItem("selectedQuizTitle");
+    const currentQuiz = quizzes.find((q) => q.title === selectedQuizTitle);
 
-  if (!currentQuiz) {
-    alert("Quiz not found!");
-    return;
-  }
-
-  currentQuiz.questions.forEach((question, i) => {
-    const selectedOption = document.querySelector(
-      `input[name="question_${i}"]:checked`
-    );
-    if (selectedOption && selectedOption.value.trim() === question.answer) {
-      score++;
+    if (!currentQuiz) {
+        alert("Quiz not found!");
+        return;
     }
-  });
 
-  scoreFooter.innerHTML = `You Scored: ${score} / ${currentQuiz.questions.length}`;
+    currentQuiz.questions.forEach((question, i) => {
+        const selectedOption = document.querySelector(
+            `input[name="question_${i}"]:checked`
+        );
+        if (selectedOption && selectedOption.value.trim() === question.answer) {
+            score++;
+        }
+    });
+
+    scoreFooter.innerHTML = `You Scored: ${score} / ${currentQuiz.questions.length}`;
+
+    const currentUserData = localStorage.getItem("currentUser");
+
+    if (currentUserData) {
+        const user = JSON.parse(currentUserData);
+
+        if (!user.scores) {
+            user.scores = [];
+        }
+
+        const quizScore = {
+            title: selectedQuizTitle,
+            score: `${score} / ${currentQuiz.questions.length}`,
+        };
+
+        const existingScoreIndex = user.scores.findIndex(s => s.title === quizScore.title);
+        if (existingScoreIndex === -1) {
+            user.scores.push(quizScore);
+            localStorage.setItem("currentUser", JSON.stringify(user)); 
+
+            // Update the quizUsers list as well
+            let usersData = JSON.parse(localStorage.getItem("quizUsers")) || [];
+            const userIndex = usersData.findIndex((u) => u.email === user.email); 
+            if (userIndex !== -1) {
+                usersData[userIndex].scores.push(quizScore); 
+                localStorage.setItem("quizUsers", JSON.stringify(usersData)); 
+            }
+        }
+    }
 }
 
 function setupEventListeners() {

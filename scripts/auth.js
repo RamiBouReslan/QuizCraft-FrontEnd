@@ -1,4 +1,3 @@
-
 const elements = {
   loginTabBtn: document.getElementById("loginTabBtn"),
   signupTabBtn: document.getElementById("signupTabBtn"),
@@ -62,7 +61,12 @@ function handleLogin(e) {
   if (user) {
     sessionStorage.setItem(
       "currentUser",
-      JSON.stringify({ email: email, role: "user" })
+      JSON.stringify({
+        email: email,
+        role: "user",
+        username: user.username,
+        scores: user.scores,
+      })
     );
     window.location.href = "./pages/home.html";
   } else {
@@ -91,8 +95,17 @@ function handleSignup(e) {
     }
   }
 
-  users.push({ email: email, password: password, role: "user", scores: {} });
+  const newUser = {
+    email: email,
+    password: password,
+    role: "user",
+    username: email.split('@')[0],
+    scores: []
+  };
+
+  users.push(newUser);
   localStorage.setItem("quizUsers", JSON.stringify(users));
+
 
   alert("Registration successful! Redirecting...");
   window.location.href = "./pages/home.html";
@@ -150,7 +163,6 @@ function handlePasswordReset(e) {
 
       alert("Password updated successfully! Redirecting...");
 
-      
       window.location.href = "./pages/home.html";
     }
   }
