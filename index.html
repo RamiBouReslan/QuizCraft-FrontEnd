@@ -7,6 +7,8 @@
     <link rel="icon" href="./assets/images/emblom.png" type="image/png" />
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/Authentication.css">
+    <script src="./scripts/storage.js" defer></script>
+    <script src="./scripts/auth.js" defer></script>
   </head>
   <body class="container">
     <header class=" header flex spaceBtw wrap">
@@ -15,7 +17,7 @@
         <h1 class="font h1">Welcome to QuizCraft! </h1>
       </section>
       <section class="flex sectionHeader">
-        <button id="loginTabBtn" class="bottunHeader font activeTab">LogIn</button>
+        <button id="loginTabBtn" class="bottunHeader font ">LogIn</button>
         <Button id="signupTabBtn" class="bottunHeader font">SignUp</Button>
       </section>
     </header>
@@ -53,8 +55,9 @@
                     <button type="submit" class="font formButton">Confirm</button>
                 </div>
                 </form>
+            </div>  
             <div  id="signupSection" class="flex column hidden ">
-                <img src="./assets/images/signup.png" class="formImg" alt="login">
+                <img src="./assets/images/signup.png" class="formImg" alt="signup">
                 <form id="signupForm" class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
                     <br>

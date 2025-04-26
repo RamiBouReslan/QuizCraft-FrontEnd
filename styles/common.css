@@ -87,13 +87,7 @@
 .logoutBottun:hover{
     background-color: #b00000;
 }
-.activeTab {
-    background: linear-gradient(to right, #20b1fa, #1bf8a7) !important;
-    border-color: #6cb4ee;
-    color: #142850;
-    font-weight: bold;
-    box-shadow: 0 0 15px #3ac8eb80;
-  }
+
 
 @media (max-width: 768px) {
     .header {
