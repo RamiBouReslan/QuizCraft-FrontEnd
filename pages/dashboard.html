@@ -7,8 +7,10 @@
     <link rel="icon" href="../assets/images/emblom.png" type="image/png" />
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="../scripts/storage.js" defer></script>
+    <script src="../scripts/dashboard.js" defer></script>
+    
 </head>
-<body>
     <body class="container">
         <header class="header flex wrap">
           <section class="flex sectionHeader">
@@ -16,29 +18,12 @@
             <h1 class="font h1">DashBoard</h1>
           </section>
           <section class="flex sectionHeader">
-            <button class="bottunHeader font logoutBottun">Logout</button>
+            <button id="logoutButton" class="bottunHeader font logoutBottun">Logout</button>
           </section>
         </header>
-        <main class="flex column wrap font dashboard">
+        <main id="dashboardMain" class="flex column wrap font dashboard">
             <h2 class="font title">Scores Overview</h2>
-            <article class="flex  scoreTable font">
-            <section class="flex column username">
-                <h3 >UserName</h3>
-            </section>
-            <ul class=" flex column scoreList">
-                <li>HTML Basic : 3/5  </li>
-                <li>CSS Basics : 4/5 </li>
-            </ul>
-        </article>
-        <article class="flex  scoreTable font">
-            <section class="flex column username">
-                <h3 >UserName</h3>
-            </section>
-            <ul class=" flex column scoreList">
-                <li>HTML Basic : 3/5  </li>
-                <li>CSS Basics : 4/5 </li>
-            </ul>
-        </article>
+          
         </main>
 </body>
 </html>
