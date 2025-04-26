@@ -15,20 +15,20 @@
         <h1 class="font h1">Welcome to QuizCraft! </h1>
       </section>
       <section class="flex sectionHeader">
-        <button class="bottunHeader font">LogIn</button>
-        <Button class="bottunHeader font">SignUp</Button>
+        <button id="loginTabBtn" class="bottunHeader font">LogIn</button>
+        <Button id="signupTabBtn" class="bottunHeader font">SignUp</Button>
       </section>
     </header>
-    <main  >
+    <main class="flex main wrap">
         <article class="flex column font article ">
             <h2>Test Your Brain, Fuel Your Curiosity!</h2>
             <br>
             <p>Ready to prove you're the ultimate quiz master? Battle your way up the leaderboard and claim your bragging rights!</p>
         </article>
         <section class="responsiveSection">
-            <div class="flex column ">
+            <div id="loginSection" class="flex column ">
                 <img src="./assets/images/login.png" class="formImg" alt="login">
-                <form class="form">
+                <form id="loginForm" class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
                     <br>
                     <input type="password" class="font formInput" placeholder="Password">
@@ -36,10 +36,10 @@
                     <button type="submit" class="font formButton">Login</button>
                 </form>
                 <p class="font forgotPassword">
-                   <a href="#"> Forgot Password?</a>
+                   <a id="forgotPasswordLink" href="#"> Forgot Password?</a>
                 </p>
             </div>
-            <div class="flex column hidden">
+            <div id="resetPassSection" class="flex column hidden">
                 <img src="./assets/images/resetPass.png" class="formImg" alt="login">
                 <form class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
@@ -53,7 +53,7 @@
                     <button type="submit" class="font formButton">Confirm</button>
                 </div>
                 </form>
-            <div class="flex column hidden ">
+            <div  id="signupSection" class="flex column hidden ">
                 <img src="./assets/images/signup.png" class="formImg" alt="login">
                 <form class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
