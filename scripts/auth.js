@@ -60,4 +60,28 @@ function handleLogin(e) {
     }
   }
 
+  function handleSignup(e) {
+    e.preventDefault();
+    const email = document.querySelector('#signupSection input[type="email"]').value;
+    const password = document.querySelector('#signupSection input[type="password"]:first-of-type').value;
+    const confirmPassword = document.querySelector('#signupSection input[type="password"]:last-of-type').value;
+  
+    if (password !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+  
+    const users = JSON.parse(localStorage.getItem('quizUsers'));
+    if (users.some(u => u.email === email)) {
+      alert("Email already registered!");
+      return;
+    }
+  
+    users.push({ email, password, role: "user", scores: {} });
+    localStorage.setItem('quizUsers', JSON.stringify(users));
+    alert("Registration successful! Please login.");
+    showSection('login');
+    elements.signupForm.reset();
+  }
+  
   
