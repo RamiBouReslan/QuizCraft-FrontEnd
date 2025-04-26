@@ -15,7 +15,7 @@
         <h1 class="font h1">Welcome to QuizCraft! </h1>
       </section>
       <section class="flex sectionHeader">
-        <button id="loginTabBtn" class="bottunHeader font">LogIn</button>
+        <button id="loginTabBtn" class="bottunHeader font activeTab">LogIn</button>
         <Button id="signupTabBtn" class="bottunHeader font">SignUp</Button>
       </section>
     </header>
@@ -29,11 +29,11 @@
             <div id="loginSection" class="flex column ">
                 <img src="./assets/images/login.png" class="formImg" alt="login">
                 <form id="loginForm" class="form">
-                    <input type="email" class="font formInput" placeholder="Enter your email">
+                    <input type="email" id="loginEmail" class="font formInput" placeholder="Enter your email">
                     <br>
-                    <input type="password" class="font formInput" placeholder="Password">
+                    <input type="password" id="loginPassword" class="font formInput" placeholder="Password">
                     <br>
-                    <button type="submit" class="font formButton">Login</button>
+                    <button type="submit" id="formButton" class="font formButton">Login</button>
                 </form>
                 <p class="font forgotPassword">
                    <a id="forgotPasswordLink" href="#"> Forgot Password?</a>
@@ -41,7 +41,7 @@
             </div>
             <div id="resetPassSection" class="flex column hidden">
                 <img src="./assets/images/resetPass.png" class="formImg" alt="login">
-                <form class="form">
+                <form id="resetPasswordForm" class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
                     <br>
                     <button type="submit" class="font formButton">Confirm</button>
@@ -55,7 +55,7 @@
                 </form>
             <div  id="signupSection" class="flex column hidden ">
                 <img src="./assets/images/signup.png" class="formImg" alt="login">
-                <form class="form">
+                <form id="signupForm" class="form">
                     <input type="email" class="font formInput" placeholder="Enter your email">
                     <br>
                     <input type="password" class="font formInput" placeholder="Password">
