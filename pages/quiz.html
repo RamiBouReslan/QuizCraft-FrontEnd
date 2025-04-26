@@ -9,25 +9,27 @@
     <link rel="stylesheet" href="../styles/quiz.css" />
     <script src="../scripts/storage.js" defer></script>
     <script src="../scripts/quiz.js" defer></script>
+  
   </head>
   <body class="container">
     <header class="header flex spaceBtw wrap">
       <section class="flex sectionHeader">
         <img class="logoImg" src="../assets/images/logo1.PNG" alt="logo" />
-        <h1 id="quizTitle" class="font h1">Choose the Correct Answer!</h1>
+        <h1 id="quizHeader" class="font h1" >Choose the Correct Answer!</h1>
       </section>
       <section class="flex sectionHeader">
-        <button id="homeButton" class="bottunHeader font">Back to Home Page</button>
-        <button id="logoutButton" class="bottunHeader font logoutBottun">Logout</button>
+        <button   id="homeButton" class="bottunHeader font" >Back to Home Page</button>
+        <button   id="logoutButton" class="bottunHeader font logoutBottun">Logout</button>
       </section>
     </header>
     <main class="flex column wrap font mainBody">
-    
+      <h2 id="quizTitle" class="quizTitle"></h2>
+      <form id="quizForm" class="flex column quizForm"></form>
       <button id="submitButton" class="submitButton">Submit</button>
-
+    
     </main>
     <footer class="footer">
-        <h1 id="scoreFooter" class="font h1">You Scored: </h1>
+      <h1 id="scoreFooter" class="font h1">You Scored: </h1>
     </footer>
   </body>
 </html>

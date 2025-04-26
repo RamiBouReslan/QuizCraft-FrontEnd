@@ -3,8 +3,9 @@
   margin: 20px;
   background: linear-gradient(to right, #1900ff, #000852);
   border-radius: 20px;
-  min-height: 75vh;
+  min-height: 100vh;
   justify-content: flex-start;
+  overflow-y: auto; 
 }
 
 .quizTitle {
