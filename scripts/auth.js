@@ -84,4 +84,28 @@ function handleLogin(e) {
     elements.signupForm.reset();
   }
   
+  function handlePasswordReset(e) {
+    e.preventDefault();
+    const email = document.querySelector('#resetPassSection input[type="email"]').value;
+    const newPassword = document.querySelector('#resetPassSection input[type="password"]:first-of-type').value;
+    const confirmPassword = document.querySelector('#resetPassSection input[type="password"]:last-of-type').value;
   
+    if (newPassword !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+  
+    const users = JSON.parse(localStorage.getItem('quizUsers'));
+    const userIndex = users.findIndex(u => u.email === email);
+  
+    if (userIndex === -1) {
+      alert("Email not found!");
+      return;
+    }
+  
+    users[userIndex].password = newPassword;
+    localStorage.setItem('quizUsers', JSON.stringify(users));
+    alert("Password updated successfully!");
+    showSection('login');
+    elements.resetPasswordForm.reset();
+  }
