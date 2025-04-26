@@ -36,3 +36,28 @@ const elements = {
         break;
     }  
 }
+
+function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const users = JSON.parse(localStorage.getItem('quizUsers'));
+  
+
+    if (email === "admin@quiz.com" && password === "admin123") {
+      sessionStorage.setItem('currentUser', JSON.stringify({ email, role: "admin" }));
+      window.location.href = "dashboard.html";
+      return;
+    }
+  
+   
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+      sessionStorage.setItem('currentUser', JSON.stringify({ email, role: "user" }));
+      window.location.href = "home.html";
+    } else {
+      alert("Invalid email or password");
+    }
+  }
+
+  
