@@ -51,7 +51,9 @@ function handleLogin(e) {
     }
   
    
-    const user = users.find(u => u.email === email && u.password === password);
+    const user = users.find(function(u) { 
+        return  u.email === email && u.password === password});
+        
     if (user) {
       sessionStorage.setItem('currentUser', JSON.stringify({ email, role: "user" }));
       window.location.href = "home.html";
@@ -72,7 +74,9 @@ function handleLogin(e) {
     }
   
     const users = JSON.parse(localStorage.getItem('quizUsers'));
-    if (users.some(u => u.email === email)) {
+    if (users.some(function(u) {
+        return u.email === email;
+      })) {
       alert("Email already registered!");
       return;
     }
@@ -96,7 +100,10 @@ function handleLogin(e) {
     }
   
     const users = JSON.parse(localStorage.getItem('quizUsers'));
-    const userIndex = users.findIndex(u => u.email === email);
+    const userIndex = users.findIndex(function(u) {
+        return u.email === email;
+      });
+    
   
     if (userIndex === -1) {
       alert("Email not found!");
@@ -109,3 +116,31 @@ function handleLogin(e) {
     showSection('login');
     elements.resetPasswordForm.reset();
   }
+
+  function setupEventListeners() {
+   
+    elements.loginTabBtn.addEventListener('click',  function() {
+        showSection('login');
+      });
+    elements.signupTabBtn.addEventListener('click',function() {
+        showSection('signup');
+      });
+    
+   
+    elements.forgotPasswordLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection('reset');
+      });
+    
+    
+    elements.loginForm.addEventListener('submit', handleLogin);
+    elements.signupForm.addEventListener('submit', handleSignup);
+    elements.resetPasswordForm.addEventListener('submit', handlePasswordReset);
+  }
+  
+ 
+  document.addEventListener('DOMContentLoaded',function() {
+    initStorage();
+    setupEventListeners();
+    showSection('login'); 
+  });
